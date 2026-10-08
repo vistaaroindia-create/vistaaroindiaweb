@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5f8f7" />
+  <meta name="description" content="Vistaaro — Digital, Entertainment, Tech and future products under one umbrella brand." />
+  <title>Vistaaro — One Vision. Multiple Possibilities.</title>
+
+  <style>
+    :root{
+      --bg:#070707;
+      --bg-soft:#0d0d0d;
+      --card:#111111;
+      --card-2:#161616;
+      --text:#f7f7f7;
+      --muted:#a6a6a6;
+      --line:rgba(255,255,255,.11);
+      --accent:#ffffff;
+      --accent-2:#bdbdbd;
+      --success:#d8ffd1;
+      --danger:#ffd6d6;
+      --shadow:0 25px 80px rgba(0,0,0,.35);
+      --radius:24px;
+      --max:1240px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(255,255,255,.07), transparent 28%),
+        radial-gradient(circle at 85% 18%, rgba(255,255,255,.045), transparent 30%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    button,input,textarea{font:inherit}
+    img{max-width:100%;display:block}
+
+    .container{width:min(calc(100% - 40px), var(--max));margin:auto}
+
+    /* ---------- HEADER ---------- */
+    header{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:1000;
+      border-bottom:1px solid transparent;
+      transition:.3s ease;
+    }
+    header.scrolled{
+      background:rgba(7,7,7,.78);
+      backdrop-filter:blur(18px);
+      border-bottom-color:var(--line);
+    }
+
+    .nav{
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:.17em;
+      font-size:1.02rem;
+    }
+    .brand-mark{
+      width:28px;
+      height:28px;
+      border:1px solid rgba(255,255,255,.6);
+      border-radius:9px;
+      position:relative;
+      overflow:hidden;
+    }
+    .brand-mark::before,
+    .brand-mark::after{
+      content:"";
+      position:absolute;
+      inset:6px;
+      border-radius:5px;
+      border:1px solid rgba(255,255,255,.45);
+      transform:rotate(45deg);
+    }
+    .brand-mark::after{inset:9px;opacity:.65}
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:26px;
+      color:#d1d1d1;
+      font-size:.92rem;
+    }
+    .nav-links a{transition:.2s ease}
+    .nav-links a:hover{color:#fff}
+
+    .nav-cta{
+      padding:11px 16px;
+      border:1px solid rgba(255,255,255,.24);
+      border-radius:999px;
+      background:#fff;
+      color:#000;
+      font-weight:700;
+      font-size:.88rem;
+      transition:.2s ease;
+    }
+    .nav-cta:hover{transform:translateY(-1px);background:#e9e9e9}
+
+    .menu-btn{
+      display:none;
+      background:transparent;
+      border:0;
+      color:#fff;
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      cursor:pointer;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero{
+      min-height:100svh;
+      display:grid;
+      place-items:center;
+      position:relative;
+      padding:150px 0 90px;
+      overflow:hidden;
+    }
+
+    .hero-orb{
+      position:absolute;
+      width:520px;
+      height:520px;
+      border-radius:50%;
+      filter:blur(18px);
+      background:radial-gradient(circle, rgba(255,255,255,.12), rgba(255,255,255,0) 66%);
+      right:-120px;
+      top:80px;
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size:72px 72px;
+      mask-image:linear-gradient(to bottom, black, transparent 82%);
+      pointer-events:none;
+    }
+
+    .hero-content{position:relative;z-index:2;max-width:950px}
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 11px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:#ddd;
+      background:rgba(255,255,255,.035);
+      font-size:.78rem;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+    .dot{
+      width:7px;height:7px;border-radius:50%;background:#fff;
+      box-shadow:0 0 18px rgba(255,255,255,.75);
+    }
+
+    h1{
+      font-size:clamp(3.7rem, 10vw, 8.4rem);
+      line-height:.9;
+      letter-spacing:-.055em;
+      margin:28px 0 24px;
+      font-weight:850;
+    }
+    .gradient-text{
+      background:linear-gradient(115deg,#fff 10%,#aaa 50%,#fff 88%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .hero-copy{
+      max-width:720px;
+      font-size:clamp(1.06rem,2vw,1.28rem);
+      color:#bcbcbc;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      margin-top:32px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:13px 18px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      transition:.2s ease;
+      font-weight:700;
+    }
+    .btn-primary{background:#fff;color:#000;border-color:#fff}
+    .btn-primary:hover{transform:translateY(-2px);background:#e9e9e9}
+    .btn-secondary{background:rgba(255,255,255,.035)}
+    .btn-secondary:hover{background:rgba(255,255,255,.08)}
+
+    .hero-meta{
+      margin-top:56px;
+      display:flex;
+      gap:28px;
+      flex-wrap:wrap;
+      color:#8e8e8e;
+      font-size:.9rem;
+    }
+    .hero-meta span{
+      padding-right:28px;
+      border-right:1px solid var(--line);
+    }
+    .hero-meta span:last-child{border-right:0}
+
+    /* ---------- SHARED ---------- */
+    section{padding:110px 0}
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:28px;
+      margin-bottom:38px;
+    }
+    .section-kicker{
+      color:#8d8d8d;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:.74rem;
+      margin-bottom:10px;
+    }
+    h2{
+      font-size:clamp(2.2rem,5vw,4.2rem);
+      line-height:1.05;
+      letter-spacing:-.045em;
+    }
+    .section-intro{
+      max-width:560px;
+      color:var(--muted);
+    }
+
+    .panel{
+      border:1px solid var(--line);
+      background:linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    /* ---------- VENTURES ---------- */
+    .venture-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .venture-card{
+      min-height:280px;
+      padding:24px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      position:relative;
+      overflow:hidden;
+      transition:.25s ease;
+    }
+    .venture-card:hover{
+      transform:translateY(-5px);
+      border-color:rgba(255,255,255,.24);
+    }
+
+    .venture-card.active{
+      background:
+        radial-gradient(circle at 88% 14%, rgba(255,255,255,.13), transparent 30%),
+        linear-gradient(145deg, #151515, #0d0d0d);
+    }
+
+    .venture-number{
+      color:#777;
+      font-size:.75rem;
+      letter-spacing:.12em;
+    }
+
+    .venture-icon{
+      width:54px;height:54px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      display:grid;
+      place-items:center;
+      background:rgba(255,255,255,.045);
+      font-size:1.25rem;
+      margin-bottom:26px;
+    }
+
+    .venture-card h3{font-size:1.35rem;margin-bottom:8px}
+    .venture-card p{color:#969696;font-size:.92rem;max-width:280px}
+    .venture-link{
+      margin-top:22px;
+      color:#fff;
+      font-size:.87rem;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .status{
+      position:absolute;
+      top:20px;
+      right:20px;
+      padding:7px 9px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      color:#c6c6c6;
+      font-size:.68rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .status.live{
+      color:#fff;
+      background:#fff;
+      border-color:#fff;
+      color:#000;
+      font-weight:800;
+    }
+
+    /* ---------- DIGITAL ---------- */
+    .digital-layout{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:18px;
+    }
+
+    .digital-copy{padding:34px}
+    .digital-copy h3{
+      font-size:2.2rem;
+      line-height:1.06;
+      margin-bottom:14px;
+    }
+    .digital-copy > p{color:var(--muted);max-width:650px}
+
+    .service-list{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+      margin-top:28px;
+    }
+    .service{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.025);
+      border-radius:16px;
+      padding:14px;
+    }
+    .service strong{display:block;font-size:.96rem}
+    .service span{color:#818181;font-size:.8rem}
+
+    .digital-side{
+      padding:22px;
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      background:
+        radial-gradient(circle at 80% 10%, rgba(255,255,255,.10), transparent 34%),
+        linear-gradient(145deg,#131313,#0b0b0b);
+    }
+    .digital-side .big-label{
+      font-size:clamp(3rem,7vw,6rem);
+      line-height:.85;
+      letter-spacing:-.07em;
+      font-weight:850;
+      opacity:.95;
+    }
+
+    /* ---------- SHOWCASE ---------- */
+    .work-grid{
+      display:grid;
+      grid-template-columns:1.4fr .6fr .6fr;
+      gap:16px;
+      align-items:stretch;
+    }
+
+    .work-card{
+      min-height:260px;
+      padding:26px;
+      overflow:hidden;
+      position:relative;
+      background:
+        linear-gradient(160deg, rgba(255,255,255,.08), rgba(255,255,255,.02)),
+        #101010;
+    }
+
+    .work-card.large{min-height:540px}
+    .work-visual{
+      position:absolute;
+      inset:auto 18px 18px 18px;
+      height:52%;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 25% 20%, rgba(255,255,255,.14), transparent 26%),
+        linear-gradient(145deg,#262626,#0d0d0d);
+      display:flex;
+      align-items:flex-end;
+      padding:20px;
+      color:#bdbdbd;
+      font-size:.78rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .work-card h3{font-size:1.55rem;position:relative;z-index:2}
+    .work-card p{position:relative;z-index:2;color:#8f8f8f;margin-top:8px;max-width:420px}
+
+    /* ---------- COMING SOON SLIDER ---------- */
+    .coming-soon{
+      position:relative;
+      overflow:hidden;
+      border-radius:32px;
+      border:1px solid var(--line);
+      min-height:540px;
+      background:#0b0b0b;
+      box-shadow:var(--shadow);
+    }
+
+    .slides{
+      position:relative;
+      min-height:540px;
+    }
+
+    .slide{
+      position:absolute;
+      inset:0;
+      padding:46px;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      opacity:0;
+      transform:scale(1.02);
+      transition:opacity .7s ease, transform .9s ease;
+      pointer-events:none;
+    }
+
+    .slide.active{
+      opacity:1;
+      transform:scale(1);
+    }
+
+    .slide-bg{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at var(--x,50%) var(--y,35%), rgba(255,255,255,.12), transparent 30%),
+        linear-gradient(145deg, #161616, #080808);
+    }
+    .slide-content{position:relative;z-index:1;max-width:700px}
+    .slide-label{
+      font-size:.72rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:#969696;
+      margin-bottom:18px;
+    }
+    .slide h3{
+      font-size:clamp(3rem,8vw,7rem);
+      letter-spacing:-.07em;
+      line-height:.86;
+    }
+    .slide p{
+      max-width:580px;
+      margin:22px auto 0;
+      color:#999;
+      font-size:1.02rem;
+    }
+
+    .slider-dots{
+      position:absolute;
+      left:50%;
+      bottom:22px;
+      transform:translateX(-50%);
+      display:flex;
+      gap:7px;
+      z-index:4;
+    }
+    .slider-dot{
+      width:24px;
+      height:4px;
+      border-radius:999px;
+      background:#404040;
+      border:0;
+      cursor:pointer;
+      transition:.25s ease;
+    }
+    .slider-dot.active{background:#fff;width:42px}
+
+    .slider-control{
+      position:absolute;
+      top:24px;
+      right:24px;
+      z-index:5;
+      padding:9px 11px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(0,0,0,.32);
+      backdrop-filter:blur(10px);
+      color:#ddd;
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about-grid{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:18px;
+    }
+    .about-card{padding:30px}
+    .about-card h3{font-size:1.7rem;margin-bottom:14px}
+    .about-card p{color:var(--muted)}
+
+    .timeline{
+      display:grid;
+      gap:14px;
+      margin-top:26px;
+    }
+    .timeline-item{
+      padding:16px 0;
+      border-top:1px solid var(--line);
+      display:grid;
+      grid-template-columns:100px 1fr;
+      gap:16px;
+    }
+    .timeline-item strong{font-size:.85rem}
+    .timeline-item span{color:#8c8c8c;font-size:.9rem}
+
+    /* ---------- CONTACT ---------- */
+    .contact-box{
+      padding:42px;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:30px;
+      background:
+        radial-gradient(circle at 90% 15%, rgba(255,255,255,.09), transparent 30%),
+        linear-gradient(145deg,#151515,#0c0c0c);
+    }
+    .contact-box h2{max-width:600px}
+    .contact-box p{color:#969696;max-width:560px;margin-top:14px}
+
+    .contact-side{
+      border-left:1px solid var(--line);
+      padding-left:28px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:14px;
+    }
+    .contact-row{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      padding:14px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .contact-row small{color:#777;text-transform:uppercase;letter-spacing:.08em}
+    .contact-row a{font-weight:650}
+
+    /* ---------- FOOTER ---------- */
+    footer{
+      padding:34px 0 42px;
+      border-top:1px solid var(--line);
+      margin-top:40px;
+    }
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      align-items:center;
+      color:#747474;
+      font-size:.82rem;
+    }
+
+
+    /* ---------- CONTACT FORM ---------- */
+    .contact-form{
+      display:grid;
+      gap:13px;
+      margin-top:22px;
+    }
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:13px;
+    }
+    .field{
+      width:100%;
+      padding:14px 15px;
+      color:#fff;
+      background:rgba(255,255,255,.035);
+      border:1px solid var(--line);
+      border-radius:14px;
+      outline:none;
+      transition:.2s ease;
+    }
+    .field::placeholder{color:#6f6f6f}
+    .field:focus{
+      border-color:rgba(255,255,255,.38);
+      background:rgba(255,255,255,.055);
+    }
+    textarea.field{min-height:132px;resize:vertical}
+    select.field{appearance:none}
+    .form-note{
+      font-size:.73rem;
+      color:#707070;
+      margin-top:1px;
+    }
+    .form-status{
+      min-height:20px;
+      font-size:.78rem;
+      color:#aaa;
+    }
+
+    /* ---------- FOUNDER PROFILE ---------- */
+    .founder-layout{
+      display:grid;
+      grid-template-columns:.72fr 1.28fr;
+      gap:18px;
+    }
+    .founder-card,
+    .vision-card{
+      padding:32px;
+    }
+    .founder-card{
+      background:
+        radial-gradient(circle at 80% 10%, rgba(255,255,255,.09), transparent 30%),
+        linear-gradient(145deg,#151515,#0d0d0d);
+    }
+    .founder-badge{
+      width:82px;height:82px;
+      border-radius:24px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.045);
+      display:grid;
+      place-items:center;
+      font-size:1.55rem;
+      margin-bottom:24px;
+    }
+    .founder-card h3{
+      font-size:2rem;
+      line-height:1;
+      margin-bottom:9px;
+    }
+    .founder-role{
+      color:#8e8e8e;
+      font-size:.85rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .founder-card p{
+      margin-top:20px;
+      color:#a1a1a1;
+    }
+    .trust-points{
+      display:grid;
+      gap:12px;
+      margin-top:25px;
+    }
+    .trust-point{
+      padding:15px 16px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.025);
+    }
+    .trust-point strong{display:block;font-size:.9rem;margin-bottom:4px}
+    .trust-point span{color:#7f7f7f;font-size:.8rem}
+    .vision-card h3{
+      font-size:2rem;
+      line-height:1.06;
+      margin-bottom:14px;
+    }
+    .vision-card p{
+      color:#9a9a9a;
+      font-size:1rem;
+    }
+    .vision-quote{
+      margin-top:24px;
+      padding:20px;
+      border-left:2px solid #fff;
+      background:rgba(255,255,255,.025);
+      border-radius:0 16px 16px 0;
+      color:#e9e9e9;
+      font-size:1.05rem;
+    }
+    .principles{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-top:20px;
+    }
+    .principle{
+      padding:16px;
+      border:1px solid var(--line);
+      border-radius:16px;
+    }
+    .principle strong{display:block;font-size:.84rem;margin-bottom:5px}
+    .principle span{color:#777;font-size:.76rem}
+
+    /* ---------- LOGO SLOT ---------- */
+    .brand-logo-img{
+      display:none;
+      height:30px;
+      width:auto;
+      max-width:170px;
+      object-fit:contain;
+    }
+    .brand.has-logo .brand-mark{display:none}
+    .brand.has-logo .brand-logo-img{display:block}
+
+    /* ---------- MOBILE ---------- */
+    @media (max-width: 980px){
+      .nav-links{
+        position:absolute;
+        top:78px;
+        left:20px;
+        right:20px;
+        padding:14px;
+        border:1px solid var(--line);
+        background:rgba(8,8,8,.94);
+        backdrop-filter:blur(18px);
+        border-radius:18px;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .nav-links.show{display:flex}
+      .nav-links a{padding:10px 8px}
+      .nav-cta{display:none}
+      .menu-btn{display:block}
+
+      .venture-grid{grid-template-columns:repeat(2,1fr)}
+      .digital-layout,.about-grid,.contact-box{grid-template-columns:1fr}
+      .contact-side{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:18px}
+      .work-grid{grid-template-columns:1fr 1fr}
+      .work-card.large{grid-column:1/-1}
+    }
+
+    @media (max-width: 640px){
+      .form-grid{grid-template-columns:1fr}
+      .founder-layout{grid-template-columns:1fr}
+      .principles{grid-template-columns:1fr}
+
+      .container{width:min(calc(100% - 24px), var(--max))}
+      section{padding:84px 0}
+      .hero{padding:130px 0 70px}
+      .hero-meta{gap:12px}
+      .hero-meta span{border-right:0;padding-right:0}
+      .section-head{display:block}
+      .section-intro{margin-top:14px}
+      .venture-grid,.service-list,.work-grid{grid-template-columns:1fr}
+      .work-card.large{grid-column:auto}
+      .work-card.large{min-height:340px}
+      .coming-soon,.slides{min-height:450px}
+      .slide{padding:28px 18px}
+      .digital-copy,.about-card,.contact-box{padding:24px}
+      .timeline-item{grid-template-columns:78px 1fr}
+      .footer-row{flex-direction:column;align-items:flex-start}
+    }
+
+    /* ---------- ANIMATION ---------- */
+    .reveal{
+      opacity:0;
+      transform:translateY(18px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible{opacity:1;transform:none}
+    /* ---------- VISTAARO BRAND THEME ---------- */
+    :root{
+      --bg:#f5f8f7;
+      --bg-soft:#eef3f1;
+      --card:#ffffff;
+      --card-2:#f7faf9;
+      --text:#102b47;
+      --muted:#596a79;
+      --line:rgba(16,43,71,.13);
+      --accent:#102f50;
+      --accent-2:#10a66a;
+      --shadow:0 24px 70px rgba(16,43,71,.10);
+      --radius:24px;
+    }
+    body{
+      background:
+        radial-gradient(circle at 12% 0%, rgba(16,43,71,.08), transparent 28%),
+        radial-gradient(circle at 90% 16%, rgba(16,166,106,.075), transparent 27%),
+        var(--bg);
+      color:var(--text);
+    }
+    header.scrolled{background:rgba(245,248,247,.82);border-bottom-color:var(--line)}
+    .brand{color:var(--accent)}
+    .brand-mark{display:none!important}
+    .brand-logo-img{display:none!important}
+    .brand-name-text{display:block!important;letter-spacing:.18em}
+    .nav-links{color:#536777}
+    .nav-links a:hover{color:#102b47}
+    .nav-cta{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .nav-cta:hover{background:#173e63}
+    .menu-btn{color:var(--accent);border-color:var(--line)}
+    .menu-btn:hover{background:#fff}
+    .hero-grid{background-image:linear-gradient(rgba(16,43,71,.045) 1px, transparent 1px),linear-gradient(90deg, rgba(16,43,71,.045) 1px, transparent 1px)}
+    .hero-orb{background:radial-gradient(circle, rgba(16,166,106,.12), rgba(16,166,106,0) 66%)}
+    .eyebrow{color:#28435b;background:rgba(255,255,255,.70);border-color:var(--line)}
+    .dot{background:var(--accent-2);box-shadow:0 0 18px rgba(16,166,106,.32)}
+    .gradient-text{background:linear-gradient(110deg,#102b47 10%,#176e57 52%,#102b47 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero-meta{color:#687b8b}
+    .hero-meta span{border-right-color:var(--line)}
+    h2{color:var(--text)}
+    .panel{background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(248,251,250,.92));border-color:var(--line);box-shadow:var(--shadow)}
+    .section-kicker{color:#668090}
+    .section-intro{color:#5f7080}
+    .venture-card.active{background:radial-gradient(circle at 88% 14%, rgba(16,166,106,.12), transparent 30%),linear-gradient(145deg,#fff,#f1f7f4)}
+    .venture-card:hover{border-color:rgba(16,43,71,.25)}
+    .venture-number{color:#8192a1}
+    .venture-icon{border-color:var(--line);background:#fff;color:var(--accent)}
+    .venture-card h3{color:var(--text)}
+    .venture-card p{color:#667887}
+    .venture-link{color:var(--accent)}
+    .status{border-color:rgba(16,43,71,.13);background:rgba(16,43,71,.035);color:#627687}
+    .status.live{background:var(--accent-2);border-color:var(--accent-2);color:#fff}
+    .digital-side{background:radial-gradient(circle at 80% 10%, rgba(16,166,106,.15), transparent 34%),linear-gradient(145deg,#eff7f4,#eaf1ef)}
+    .digital-side .big-label{color:var(--accent)}
+    .service{border-color:var(--line);background:rgba(255,255,255,.75)}
+    .service span{color:#718391}
+    .btn{border-color:var(--line)}
+    .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .btn-primary:hover{background:#173e63}
+    .btn-secondary{background:#fff;color:var(--accent)}
+    .btn-secondary:hover{background:#eef5f2}
+    .work-card{background:linear-gradient(160deg,rgba(255,255,255,.94),rgba(239,245,242,.92))}
+    .work-card h3{color:var(--text)}
+    .work-card p{color:#697b8a}
+    .work-visual{background:radial-gradient(circle at 25% 20%, rgba(16,166,106,.14), transparent 26%),linear-gradient(145deg,#dfe9e5,#f8fbfa);border-color:var(--line);color:#5e7282}
+    .coming-soon{background:#edf2f0;border-color:var(--line)}
+    .slide-bg{background:radial-gradient(circle at var(--x,50%) var(--y,35%), rgba(16,166,106,.16), transparent 30%),linear-gradient(145deg,#fff,#edf4f1)}
+    .slide-label{color:#69808f}
+    .slide h3{color:var(--accent)}
+    .slide p{color:#6a7c89}
+    .slider-control{background:rgba(255,255,255,.72);border-color:var(--line);color:#577083}
+    .slider-dot{background:#b4c1c0}
+    .slider-dot.active{background:var(--accent-2)}
+    .about-card h3,.founder-card h3,.vision-card h3,.contact-box h2{color:var(--text)}
+    .about-card p,.founder-card p,.vision-card p,.contact-box p{color:#5f7080}
+    .founder-card{background:radial-gradient(circle at 80% 10%, rgba(16,166,106,.10), transparent 30%),linear-gradient(145deg,#fff,#f1f7f4)}
+    .founder-badge{color:var(--accent);border-color:var(--line);background:#f4f8f6}
+    .founder-role{color:#68808e}
+    .trust-point,.principle{border-color:var(--line);background:rgba(255,255,255,.70)}
+    .trust-point span,.principle span{color:#70818e}
+    .vision-quote{border-left-color:var(--accent-2);background:#f0f6f3;color:var(--accent)}
+    .timeline-item{border-top-color:var(--line)}
+    .timeline-item span{color:#70818e}
+    .contact-box{background:radial-gradient(circle at 90% 15%, rgba(16,166,106,.13), transparent 30%),linear-gradient(145deg,#fff,#edf5f1)}
+    .contact-side{border-left-color:var(--line)}
+    .contact-row{border-bottom-color:var(--line)}
+    .contact-row small{color:#76909f}
+    .field{color:var(--text);background:#fff;border-color:var(--line)}
+    .field::placeholder{color:#8a9ba5}
+    .field:focus{border-color:rgba(16,166,106,.42);background:#fff;box-shadow:0 0 0 3px rgba(16,166,106,.08)}
+    .form-note{color:#7b8d98}
+    .form-status{color:#537063}
+    footer{border-top-color:var(--line)}
+    .footer-row{color:#71838f}
+
+    .hero-logo-wrap{
+      width:190px;
+      height:190px;
+      display:grid;
+      place-items:center;
+      margin-bottom:26px;
+      padding:10px;
+      background:#fff;
+      border:1px solid rgba(16,43,71,.12);
+      border-radius:32px;
+      box-shadow:0 18px 55px rgba(16,43,71,.10);
+    }
+    .hero-logo{width:100%;height:100%;object-fit:contain}
+
+    @media (max-width:980px){
+      .nav-links{background:rgba(255,255,255,.97);border-color:var(--line)}
+      .contact-side{border-top-color:var(--line)}
+    }
+    @media (max-width:640px){
+      .hero-logo-wrap{width:145px;height:145px;border-radius:26px;margin-bottom:22px}
+      .hero-meta span{border-right:0}
+    }
+  </style>
+</head>
+
+<body>
+  <header id="header">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Vistaaro Home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <img class="brand-logo-img" src="assets/vistaaro-logo.png" alt="Vistaaro logo" />
+        <span class="brand-name-text">VISTAARO</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#ventures">Ventures</a>
+        <a href="#digital">Digital</a>
+        <a href="#work">Work</a>
+        <a href="#entertainment">Entertainment</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#founder">Founder</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="nav-cta" href="#contact">Start a Project</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-grid"></div>
+      <div class="hero-orb"></div>
+
+      <div class="container hero-content reveal">
+        <div class="hero-logo-wrap" aria-label="Vistaaro logo">
+          <img src="assets/vistaaro-logo.png" alt="Vistaaro" class="hero-logo" />
+        </div>
+        <div class="eyebrow"><span class="dot"></span> Independent umbrella brand</div>
+        <h1>One vision.<br><span class="gradient-text">Multiple possibilities.</span></h1>
+        <p class="hero-copy">
+          Vistaaro is being built as a long-term umbrella brand across digital creativity,
+          entertainment, technology and future products — starting with what we can create today.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#digital">Explore Vistaaro Digital ↗</a>
+          <a class="btn btn-secondary" href="#ventures">Explore Ventures</a>
+        </div>
+
+        <div class="hero-meta">
+          <span>Vistaaro Digital — Active</span>
+          <span>Entertainment — Coming Soon</span>
+          <span>Products — Coming Soon</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VENTURES -->
+    <section id="ventures">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">01 / Ventures</div>
+            <h2>Built under one name.</h2>
+          </div>
+          <p class="section-intro">
+            The structure is ready to grow. Only active work is presented as active;
+            upcoming divisions stay clearly marked until they launch.
+          </p>
+        </div>
+
+        <div class="venture-grid">
+          <article class="venture-card panel active reveal">
+            <span class="status live">Active</span>
+            <div>
+              <div class="venture-number">01</div>
+              <div class="venture-icon">✦</div>
+              <h3>Vistaaro Digital</h3>
+              <p>Graphic design, video editing and digital creative work.</p>
+            </div>
+            <a class="venture-link" href="#digital">Open division →</a>
+          </article>
+
+          <article class="venture-card panel reveal">
+            <span class="status">Coming Soon</span>
+            <div>
+              <div class="venture-number">02</div>
+              <div class="venture-icon">◉</div>
+              <h3>Vistaaro Entertainment</h3>
+              <p>Movies, short films and entertainment projects are on the way.</p>
+            </div>
+            <a class="venture-link" href="#entertainment">View status →</a>
+          </article>
+
+          <article class="venture-card panel reveal">
+            <span class="status">Future</span>
+            <div>
+              <div class="venture-number">03</div>
+              <div class="venture-icon">⌁</div>
+              <h3>Vistaaro Tech</h3>
+              <p>Technology division structure reserved for future launches.</p>
+            </div>
+            <a class="venture-link" href="#tech">Tech framework →</a>
+          </article>
+
+          <article class="venture-card panel reveal">
+            <span class="status">Coming Soon</span>
+            <div>
+              <div class="venture-number">04</div>
+              <div class="venture-icon">□</div>
+              <h3>Vistaaro Products</h3>
+              <p>Physical products will be added here as they are developed.</p>
+            </div>
+            <a class="venture-link" href="#products">View status →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIGITAL -->
+    <section id="digital">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">02 / Active</div>
+            <h2>Vistaaro Digital</h2>
+          </div>
+          <p class="section-intro">The first live division of Vistaaro — built around creative digital work.</p>
+        </div>
+
+        <div class="digital-layout">
+          <article class="digital-copy panel reveal">
+            <h3>We create digital work that looks made, not assembled.</h3>
+            <p>
+              Use this space to show the exact services you currently offer. Add new services later
+              without changing the website architecture.
+            </p>
+
+            <div class="service-list">
+              <div class="service"><strong>Graphic Design</strong><span>Social posts, posters, visual creatives and more.</span></div>
+              <div class="service"><strong>Video Editing</strong><span>Short-form, YouTube and creative video edits.</span></div>
+              <div class="service"><strong>Creative Content</strong><span>Digital visuals for creators and businesses.</span></div>
+              <div class="service"><strong>Custom Projects</strong><span>Project-based design and editing work.</span></div>
+            </div>
+
+            <div style="margin-top:26px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-primary" href="#work">See Work</a>
+              <a class="btn btn-secondary" href="#contact">Start a Project</a>
+            </div>
+          </article>
+
+          <aside class="digital-side panel reveal" aria-label="Vistaaro Digital visual">
+            <div>
+              <div class="section-kicker">VISTAARO</div>
+              <div style="color:#aaa;font-size:.85rem">DIGITAL</div>
+            </div>
+            <div class="big-label">CREATE<br>EDIT<br>BUILD.</div>
+            <div style="color:#777;font-size:.82rem">Current division • 2026</div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">03 / Portfolio</div>
+            <h2>Selected work.</h2>
+          </div>
+          <p class="section-intro">
+            Replace these placeholders with your real designs, edits, thumbnails, posters or client projects.
+          </p>
+        </div>
+
+        <div class="work-grid">
+          <article class="work-card large panel reveal">
+            <div class="section-kicker">Featured</div>
+            <h3>Creative Project</h3>
+            <p>Add your strongest graphic/video project here.</p>
+            <div class="work-visual">Your project preview</div>
+          </article>
+
+          <article class="work-card panel reveal">
+            <div class="section-kicker">Graphic</div>
+            <h3>Design Work</h3>
+            <p>Social media / poster / branding showcase.</p>
+            <div class="work-visual">Design preview</div>
+          </article>
+
+          <article class="work-card panel reveal">
+            <div class="section-kicker">Video</div>
+            <h3>Edit Work</h3>
+            <p>Reel / short-form / YouTube edit showcase.</p>
+            <div class="work-visual">Video preview</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENTERTAINMENT -->
+    <section id="entertainment">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">04 / Entertainment</div>
+            <h2>Vistaaro Entertainment</h2>
+          </div>
+          <p class="section-intro">
+            This section is ready for movies, short films and series. Until the first release,
+            the page stays intentionally simple and clearly marked.
+          </p>
+        </div>
+
+        <div class="coming-soon reveal" aria-label="Vistaaro Entertainment coming soon slider">
+          <div class="slides" id="entertainmentSlider">
+            <article class="slide active" style="--x:30%;--y:25%">
+              <div class="slide-bg"></div>
+              <div class="slide-content">
+                <div class="slide-label">Vistaaro Entertainment</div>
+                <h3>Coming<br>Soon.</h3>
+                <p>Movies and short-form entertainment projects will appear here when they are ready to release.</p>
+              </div>
+            </article>
+
+            <article class="slide" style="--x:72%;--y:20%">
+              <div class="slide-bg"></div>
+              <div class="slide-content">
+                <div class="slide-label">Story • Screen • Sound</div>
+                <h3>Stories<br>in progress.</h3>
+                <p>A dedicated home for your short movies, series and future film projects.</p>
+              </div>
+            </article>
+
+            <article class="slide" style="--x:50%;--y:72%">
+              <div class="slide-bg"></div>
+              <div class="slide-content">
+                <div class="slide-label">First release</div>
+                <h3>Watch<br>Here.</h3>
+                <p>When your first release is ready, this same section can become the watch hub.</p>
+              </div>
+            </article>
+
+            <article class="slide" style="--x:18%;--y:70%">
+              <div class="slide-bg"></div>
+              <div class="slide-content">
+                <div class="slide-label">Future slate</div>
+                <h3>More<br>to come.</h3>
+                <p>Add posters, trailers, credits, cast, stories and full-film links without changing the core design.</p>
+              </div>
+            </article>
+
+            <article class="slide" style="--x:85%;--y:58%">
+              <div class="slide-bg"></div>
+              <div class="slide-content">
+                <div class="slide-label">Vistaaro</div>
+                <h3>Coming<br>Soon.</h3>
+                <p>A clean placeholder until the entertainment division officially launches.</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="slider-control">Auto Random</div>
+          <div class="slider-dots" id="sliderDots" aria-label="Slider controls"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">05 / Products</div>
+            <h2>Products are coming.</h2>
+          </div>
+          <p class="section-intro">No fake catalogue. No placeholder products pretending to be live.</p>
+        </div>
+
+        <div class="coming-soon reveal" style="min-height:420px">
+          <div class="slide active" style="--x:68%;--y:35%">
+            <div class="slide-bg"></div>
+            <div class="slide-content">
+              <div class="slide-label">Vistaaro Products</div>
+              <h3>Coming<br>Soon.</h3>
+              <p>When the first Vistaaro product is ready, it will be launched here.</p>
+              <div style="margin-top:22px">
+                <a class="btn btn-secondary" href="#contact">Stay Connected</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH -->
+    <section id="tech">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">06 / Technology</div>
+            <h2>Vistaaro Tech framework.</h2>
+          </div>
+          <p class="section-intro">
+            The technology division has a dedicated place in the architecture, ready to become a full section later.
+          </p>
+        </div>
+
+        <div class="panel reveal" style="padding:36px">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px">
+            <div style="max-width:720px">
+              <div class="section-kicker">Website Facility Ready</div>
+              <h3 style="font-size:2rem;line-height:1.08;margin-bottom:12px">Vistaaro Tech can become its own technology website.</h3>
+              <p style="color:#909090">
+                The main Vistaaro site already has the Tech division slot. Later you can connect
+                a dedicated Vistaaro Tech website, subdomain or full tech product page without redesigning the umbrella homepage.
+              </p>
+            </div>
+            <a class="btn btn-secondary" href="#contact">Tech Enquiries</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">07 / About</div>
+            <h2>Start small. Build big.</h2>
+          </div>
+          <p class="section-intro">The vision can be ambitious while the current business remains honest and focused.</p>
+        </div>
+
+        <div class="about-grid">
+          <article class="about-card panel reveal">
+            <h3>Our vision</h3>
+            <p>
+              Vistaaro is being built as a long-term umbrella brand — starting with digital creative work
+              and entertainment, with room to expand into technology and physical products as real ventures are created.
+            </p>
+          </article>
+
+          <article class="about-card panel reveal">
+            <h3>Journey</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <strong>Now</strong>
+                <span>Vistaaro Digital is the active division for graphic design and video editing work.</span>
+              </div>
+              <div class="timeline-item">
+                <strong>Next</strong>
+                <span>Launch Vistaaro Entertainment when the first movie / series project is ready.</span>
+              </div>
+              <div class="timeline-item">
+                <strong>Future</strong>
+                <span>Add Vistaaro Tech and Vistaaro Products as real projects and businesses are developed.</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FOUNDER & VISION -->
+    <section id="founder">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">08 / Founder & Vision</div>
+            <h2>The person building Vistaaro.</h2>
+          </div>
+          <p class="section-intro">
+            A clear founder story helps customers, collaborators and future partners understand who is behind the brand and what is being built.
+          </p>
+        </div>
+
+        <div class="founder-layout">
+          <article class="founder-card panel reveal">
+            <div class="founder-badge">V</div>
+            <h3>Vansh Shrivastav</h3>
+            <div class="founder-role">Founder, Vistaaro</div>
+            <p>
+              I am building Vistaaro step by step, starting from the work I can create today and leaving room for
+              the brand to grow into new ventures over time. I believe a lasting brand is built through quality,
+              consistency, transparency and real execution.
+            </p>
+
+            <div class="trust-points">
+              <div class="trust-point">
+                <strong>Start with real work</strong>
+                <span>Current offerings are based on capabilities that are actively being developed and delivered.</span>
+              </div>
+              <div class="trust-point">
+                <strong>Build before claiming</strong>
+                <span>New ventures and products will be added when they are actually developed and ready.</span>
+              </div>
+              <div class="trust-point">
+                <strong>Think long term</strong>
+                <span>The website and brand architecture are designed to scale as Vistaaro grows.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="vision-card panel reveal">
+            <div class="section-kicker">Founder’s Note</div>
+            <h3>One vision. Growth without limits.</h3>
+            <p>
+              Hi, I'm Vansh Shrivastav, Founder of Vistaaro. My vision is to build a brand that not only delivers
+              quality products but also inspires people—especially the youth—to grow, dream bigger, and achieve success
+              in every aspect of life. Through Vistaaro, I aim to create opportunities, spread motivation, and contribute
+              to a future where growth has no limits.
+            </p>
+
+            <div class="vision-quote">
+              <strong>“Expanding Quality Everyday.”</strong><br>
+              The brand will grow by adding real products, services and ventures as they are built and validated.
+            </div>
+
+            <div class="principles">
+              <div class="principle"><strong>Quality</strong><span>Useful work over unnecessary noise.</span></div>
+              <div class="principle"><strong>Transparency</strong><span>Clear about what is live and what is coming.</span></div>
+              <div class="principle"><strong>Growth</strong><span>New ventures added through real execution.</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box panel reveal">
+          <div>
+            <div class="section-kicker">08 / Contact</div>
+            <h2>Have an idea?<br>Let's build it.</h2>
+            <p>
+              For Vistaaro Digital projects, filmmaking collaborations, creative partnerships
+              and future venture enquiries, send a message using the form.
+            </p>
+
+            <form class="contact-form" id="contactForm">
+              <div class="form-grid">
+                <input class="field" type="text" name="name" placeholder="Your name" required />
+                <input class="field" type="email" name="email" placeholder="Your email" required />
+              </div>
+
+              <div class="form-grid">
+                <input class="field" type="tel" name="phone" placeholder="Phone / WhatsApp" />
+                <select class="field" name="type" required>
+                  <option value="" selected disabled>Enquiry type</option>
+                  <option>Vistaaro Digital — Graphic Design</option>
+                  <option>Vistaaro Digital — Video Editing</option>
+                  <option>Vistaaro Entertainment — Collaboration</option>
+                  <option>Vistaaro Tech — Enquiry</option>
+                  <option>Future Venture / Partnership</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <textarea class="field" name="message" placeholder="Tell us about your project or idea..." required></textarea>
+
+              <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+                <button class="btn btn-primary" type="submit">Send Enquiry →</button>
+                <span class="form-status" id="formStatus"></span>
+              </div>
+
+              <div class="form-note">
+                Submitting opens your email app with a pre-filled message addressed to Vistaaro.
+              </div>
+            </form>
+          </div>
+
+          <div class="contact-side">
+            <div class="contact-row">
+              <small>WhatsApp</small>
+              <a href="https://wa.me/918767854929" target="_blank" rel="noopener noreferrer">+91 87678 54929</a>
+            </div>
+            <div class="contact-row">
+              <small>Email</small>
+              <a href="mailto:vistaaroindia@gmail.com">vistaaroindia@gmail.com</a>
+            </div>
+            <div class="contact-row">
+              <small>Instagram</small>
+              <a href="#" onclick="return false">@vistaaro</a>
+            </div>
+            <div class="contact-row">
+              <small>Current focus</small>
+              <span style="color:#9a9a9a">Vistaaro Digital • Creative Work</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© <span id="year"></span> VISTAARO. All rights reserved.</div>
+      <div>One vision. Multiple possibilities.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Header blur on scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 24);
+    }, { passive: true });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('show'));
+    });
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Randomized Entertainment slider
+    const slides = [...document.querySelectorAll('#entertainmentSlider .slide')];
+    const dotsWrap = document.getElementById('sliderDots');
+    let current = 0;
+    let timer;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.addEventListener('click', () => showSlide(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    const dots = [...dotsWrap.children];
+
+    function showSlide(index){
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      current = index;
+    }
+
+    function nextRandomSlide(){
+      let next;
+      do {
+        next = Math.floor(Math.random() * slides.length);
+      } while(next === current && slides.length > 1);
+
+      showSlide(next);
+    }
+
+    function startSlider(){
+      clearInterval(timer);
+      timer = setInterval(nextRandomSlide, 4200);
+    }
+
+    startSlider();
+
+    const slider = document.getElementById('entertainmentSlider');
+    slider.addEventListener('mouseenter', () => clearInterval(timer));
+    slider.addEventListener('mouseleave', startSlider);
+
+
+    // Contact form -> pre-filled email (no backend required yet)
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const data = new FormData(contactForm);
+        const subject = `Vistaaro Enquiry — ${data.get('type') || 'General'}`;
+        const body =
+`Name: ${data.get('name') || ''}
+Email: ${data.get('email') || ''}
+Phone / WhatsApp: ${data.get('phone') || ''}
+Enquiry Type: ${data.get('type') || ''}
+
+Message:
+${data.get('message') || ''}`;
+
+        window.location.href =
+          `mailto:vistaaroindia@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        formStatus.textContent = 'Opening your email app…';
+      });
+    }
+
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
